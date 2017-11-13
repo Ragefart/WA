@@ -336,23 +336,23 @@ void Verwaltung::selectionmenu() {
 	}
 }
 
-//TODO   ist doof...
-void Verwaltung::bubblesort(vector<Kunde> a) {
+
+void Verwaltung::bubblesort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Bubblesort mit " << a.size() << " Elementen begonnen!" << endl;
-	for (int i = 0; i < a.size()-1; i++){
-		for (int j = 0; j < a.size()-1; j++) {
+	int size = a.size();
+	for (int i = 0; i < size-1; i++){
+		for (int j = 0; j < size-1; j++) {
 			string b = a[j].getname();
 			string c = a[j + 1].getname();
 			int bint = a[j].getnumber();
 			int cint = a[j + 1].getnumber();
 			if (b > c)
 			{
-				/*a[j].setname(c);
+				a[j].setname(c);
 				a[j].setnumber(cint);
+				a[j + 1].setnumber(bint);
 				a[j + 1].setname(b);
-				a[j + 1].setnumber(bint);*/
-				swap(a[j], a[j + 1]);
 			}
 		}
 	}
@@ -364,7 +364,7 @@ void Verwaltung::bubblesort(vector<Kunde> a) {
 
 
 //TODO alles
-void Verwaltung::selectionsort(vector<Kunde> a) {
+void Verwaltung::selectionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Selectionsort mit " << a.size() << " Elementen begonnen!" << endl;
 
@@ -375,7 +375,7 @@ void Verwaltung::selectionsort(vector<Kunde> a) {
 
 
 //TODO alles
-void Verwaltung::quicksort(vector<Kunde> a) {
+void Verwaltung::quicksort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
 
@@ -386,7 +386,7 @@ void Verwaltung::quicksort(vector<Kunde> a) {
 
 
 //TODO alles
-void Verwaltung::insertionsort(vector<Kunde> a) {
+void Verwaltung::insertionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Insertionsort mit " << a.size() << " Elementen begonnen!" << endl;
 
