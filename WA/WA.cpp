@@ -12,6 +12,7 @@
 */
 
 #include "stdafx.h"
+#include <ctime>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -24,7 +25,7 @@ using namespace std;
 *
 */
 int main() {
-
+	srand(time(0));
 	Verwaltung verwaltung;
 	verwaltung.menu();
 
