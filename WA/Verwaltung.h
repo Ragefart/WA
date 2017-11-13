@@ -1,6 +1,7 @@
 #ifndef VERWALTUNG_H
 #define VERWALTUNG_H
 
+#include <ctime>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -22,6 +23,7 @@ public:
 	void menu();
 	void ausgeben500();
 	void ausgeben5000();
+	void ausgeben50000();
 	void speichern();
 	void deletelist();
 	void sortmenu();
@@ -39,6 +41,7 @@ private:
 	vector<Kunde> listof50;
 	vector<Kunde> listof500;
 	vector<Kunde> listof5000;
+	vector<Kunde> listof50000;
 	string newname;
 	char eingabe;
 

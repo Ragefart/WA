@@ -66,7 +66,20 @@ void Verwaltung::generatelists()
 			Kunde newKunde(newname, i);
 			listof5000.push_back(newKunde);
 		}
-		cout << "Generated List of 5000 Elements!" << endl << endl;
+		cout << "Generated List of 5.000 Elements!" << endl << endl;
+	}
+	if (listof50000.size() != 50000) {
+		for (int i = 0 ; i < 50000; i++) {
+			int fill = rand() % 5 + 5;
+			newname = "";
+			for (int j = 0; j < fill; j++) {
+				int letterget = rand() % 26;
+				newname = newname + letterlist.at(letterget);
+			}
+			Kunde newKunde(newname, i);
+			listof50000.push_back(newKunde);
+		}
+		cout << "Generated List of 50.000 Elements!" << endl << endl;
 	}
 
 	menu();
@@ -96,6 +109,16 @@ void Verwaltung::ausgeben500() {
 void Verwaltung::ausgeben5000() {
 	for (int i = 0; i < listof5000.size(); i++) {
 		listof5000[i].info();
+		cout << endl;
+	}
+	system("pause");
+	system("cls");
+	menu();
+}
+
+void Verwaltung::ausgeben50000() {
+	for (int i = 0; i < listof50000.size(); i++) {
+		listof50000[i].info();
 		cout << endl;
 	}
 	system("pause");
@@ -136,8 +159,17 @@ void Verwaltung::speichern() {
 	for (int i = 0; i < listof5000.size(); i++) {
 		list5000 << listof5000[i].getname() << "  " << listof5000[i].getnumber() << endl;
 	}
-	cout << "5000er Liste gespeichert!" << endl;
+	list5000.close();
+	cout << "5.000er Liste gespeichert!" << endl;
 
+	//50000er speichern
+	ofstream list50000;
+	list50000.open("list50000.txt");
+	for (int i = 0; i < listof50000.size(); i++) {
+		list50000 << listof50000[i].getname() << "  " << listof50000[i].getnumber() << endl;
+	}
+	list50000.close();
+	cout << "50.000er Liste gespeichert!" << endl;
 	menu();
 }
 
@@ -146,6 +178,7 @@ void Verwaltung::deletelist() {
 	listof50.clear();
 	listof500.clear();
 	listof5000.clear();
+	listof50000.clear();
 	cout << "Alle Listen wurden erfolgreich geloescht!" << endl;
 	menu();
 }
@@ -191,7 +224,8 @@ void Verwaltung::quickmenu() {
 	cout << "Willkommen im Quicksort-Menue, welche Liste wollen Sie sortieren?" << endl;
 	cout << "(A) 50er Liste (" << listof50.size() << " Elemente)" << endl;
 	cout << "(B) 500er Liste (" << listof500.size() << " Elemente)" << endl;
-	cout << "(C) 5000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(C) 5.000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(D) 50.000er Liste (" << listof50000.size() << " Elemente)" << endl;
 	cout << "(Y) Zurueck" << endl;
 	cout << "(X) Hauptmenue" << endl;
 	cin >> eingabe;
@@ -207,6 +241,10 @@ void Verwaltung::quickmenu() {
 	case'c':
 	case'C':
 		quicksort(listof5000);
+		break;
+	case'd':
+	case'D':
+		quicksort(listof50000);
 		break;
 	case'y':
 	case'Y':
@@ -229,7 +267,8 @@ void Verwaltung::bubblemenu() {
 	cout << "Willkommen im Bubblesort-Menue, welche Liste wollen Sie sortieren?" << endl;
 	cout << "(A) 50er Liste (" << listof50.size() << " Elemente)" << endl;
 	cout << "(B) 500er Liste (" << listof500.size() << " Elemente)" << endl;
-	cout << "(C) 5000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(C) 5.000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(D) 50.000er Liste (" << listof50000.size() << " Elemente)" << endl;
 	cout << "(Y) Zurueck" << endl;
 	cout << "(X) Hauptmenue" << endl;
 	cin >> eingabe;
@@ -245,6 +284,10 @@ void Verwaltung::bubblemenu() {
 	case'c':
 	case'C':
 		bubblesort(listof5000);
+		break;
+	case'd':
+	case'D':
+		bubblesort(listof50000);
 		break;
 	case'y':
 	case'Y':
@@ -266,7 +309,8 @@ void Verwaltung::insertionmenu() {
 	cout << "Willkommen im Insertionsort-Menue, welche Liste wollen Sie sortieren?" << endl;
 	cout << "(A) 50er Liste (" << listof50.size() << " Elemente)" << endl;
 	cout << "(B) 500er Liste (" << listof500.size() << " Elemente)" << endl;
-	cout << "(C) 5000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(C) 5.000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(D) 50.000er Liste (" << listof50000.size() << " Elemente)" << endl;
 	cout << "(Y) Zurueck" << endl;
 	cout << "(X) Hauptmenue" << endl;
 	cin >> eingabe;
@@ -283,6 +327,10 @@ void Verwaltung::insertionmenu() {
 	case'C':
 		insertionsort(listof5000);
 		break;
+	case'd':
+	case'D':
+		insertionsort(listof50000);
+		break;
 	case'y':
 	case'Y':
 		sortmenu();
@@ -298,13 +346,13 @@ void Verwaltung::insertionmenu() {
 	}
 }
 
-
 void Verwaltung::selectionmenu() {
 	system("cls");
 	cout << "Willkommen im Selectionsort-Menue, welche Liste wollen Sie sortieren?" << endl;
 	cout << "(A) 50er Liste (" << listof50.size() << " Elemente)" << endl;
 	cout << "(B) 500er Liste (" << listof500.size() << " Elemente)" << endl;
-	cout << "(C) 5000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(C) 5.000er Liste (" << listof5000.size() << " Elemente)" << endl;
+	cout << "(D) 50.000er Liste (" << listof50000.size() << " Elemente)" << endl;
 	cout << "(Y) Zurueck" << endl;
 	cout << "(X) Hauptmenue" << endl;
 	cin >> eingabe;
@@ -320,6 +368,10 @@ void Verwaltung::selectionmenu() {
 	case'c':
 	case'C':
 		selectionsort(listof5000);
+		break;
+	case'd':
+	case'D':
+		selectionsort(listof50000);
 		break;
 	case'y':
 	case'Y':
@@ -411,7 +463,8 @@ void Verwaltung::menu() {
 	cout << "(N) Neue Liste(n) generieren." << endl;
 	cout << "(A) 50er Liste ausgeben" << endl;
 	cout << "(B) 500er Liste ausgeben" << endl;
-	cout << "(C) 5000er Liste ausgeben" << endl;
+	cout << "(C) 5.000er Liste ausgeben" << endl;
+	cout << "(E) 50.000er Liste ausgeben" << endl;
 	cout << "(S) Listen Speichern" << endl;
 	cout << "(D) Listen loeschen" << endl;
 	cout << "(Q) Listen sortieren" << endl;
@@ -434,6 +487,10 @@ void Verwaltung::menu() {
 	case'c':
 	case'C':
 		ausgeben5000();
+		break;
+	case'e':
+	case'E':
+		ausgeben50000();
 		break;
 	case's':
 	case'S':
