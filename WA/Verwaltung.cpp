@@ -340,34 +340,37 @@ void Verwaltung::selectionmenu() {
 void Verwaltung::bubblesort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Bubblesort mit " << a.size() << " Elementen begonnen!" << endl;
-	int size = a.size();
-	for (int i = 0; i < size-1; i++){
-		for (int j = 0; j < size-1; j++) {
-			string b = a[j].getname();
-			string c = a[j + 1].getname();
-			int bint = a[j].getnumber();
-			int cint = a[j + 1].getnumber();
-			if (b > c)
-			{
-				a[j].setname(c);
-				a[j].setnumber(cint);
-				a[j + 1].setnumber(bint);
-				a[j + 1].setname(b);
+
+	for (int i = 1; i < a.size(); i++) {
+		for (int j = a.size() - 1; j >= i; j--) {
+			if (a[j - 1].getname() > a[j].getname()) {
+				Kunde tmp = a[j - 1];
+				a[j - 1] = a[j];
+				a[j] = tmp;
 			}
 		}
 	}
 
-	
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
 	menu();
 }
 
 
-//TODO alles
 void Verwaltung::selectionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Selectionsort mit " << a.size() << " Elementen begonnen!" << endl;
-
+	for (int i = 0; i < a.size() - 1; i++) {
+		int k = i; // Index kleinstes Element
+		Kunde min = a[i]; // kleinstes Element
+		for (int j = i + 1; j < a.size(); j++) { // suche kleinstes Element
+			if (a[j].getname() < min.getname()) {
+				k = j;
+				min = a[j];
+			}
+		}
+		a[k] = a[i]; // vertausche aktuelles Element mit kleinstem Element
+		a[i] = min;
+	}
 
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
 	menu();
@@ -385,11 +388,18 @@ void Verwaltung::quicksort(vector<Kunde>& a) {
 }
 
 
-//TODO alles
 void Verwaltung::insertionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Insertionsort mit " << a.size() << " Elementen begonnen!" << endl;
-
+	for (int i = 1; i < a.size(); i++) { // Durchläufe
+		Kunde tmp = a[i];
+		int j = i - 1;
+		while (j >= 0 && tmp.getname() < a[j].getname()) { // verschieben größerer Elemente
+			a[j + 1] = a[j];
+			j--;
+		}
+		a[j + 1] = tmp; // einfügen an richtiger Stelle
+	}
 
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
 	menu();
