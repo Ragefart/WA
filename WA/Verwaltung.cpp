@@ -83,7 +83,6 @@ void Verwaltung::ausgeben50() {
 	menu();
 }
 
-
 void Verwaltung::ausgeben500() {
 	for (int i = 0; i < listof500.size(); i++) {
 		listof500[i].info();
@@ -104,9 +103,7 @@ void Verwaltung::ausgeben5000() {
 	menu();
 }
 
-
 void Verwaltung::speichern() {
-	//TODO
 	/*
 	speichert alle Listen in einem eigenen txt File. Vor dem speichern wird sämtlicher Inhalt
 	aus dem File gelöscht damit nur die neusten Daten enthalten sind. 
@@ -144,7 +141,6 @@ void Verwaltung::speichern() {
 	menu();
 }
 
-
 void Verwaltung::deletelist() {
 	system("cls");
 	listof50.clear();
@@ -153,8 +149,6 @@ void Verwaltung::deletelist() {
 	cout << "Alle Listen wurden erfolgreich geloescht!" << endl;
 	menu();
 }
-
-
 
 void Verwaltung::sortmenu() {
 	system("cls");
@@ -191,8 +185,6 @@ void Verwaltung::sortmenu() {
 		break;
 	}
 }
-
-
 
 void Verwaltung::quickmenu() {
 	system("cls");
@@ -232,7 +224,6 @@ void Verwaltung::quickmenu() {
 
 }
 
-
 void Verwaltung::bubblemenu() {
 	system("cls");
 	cout << "Willkommen im Bubblesort-Menue, welche Liste wollen Sie sortieren?" << endl;
@@ -269,7 +260,6 @@ void Verwaltung::bubblemenu() {
 		break;
 	}
 }
-
 
 void Verwaltung::insertionmenu() {
 	system("cls");
@@ -350,17 +340,19 @@ void Verwaltung::selectionmenu() {
 void Verwaltung::bubblesort(vector<Kunde> a) {
 	system("cls");
 	cout << "Bubblesort mit " << a.size() << " Elementen begonnen!" << endl;
-	Kunde bubbleKunde("fill", 3);
 	for (int i = 0; i < a.size()-1; i++){
 		for (int j = 0; j < a.size()-1; j++) {
-			if (a[j].getname().compare(a[j+1].getname()) > 0) {
-				bubbleKunde.setname(a[j].getname());
-				bubbleKunde.setnumber(a[j].getnumber());
-				a[j].setname(a[j + 1].getname());
-				a[j].setnumber(a[j + 1].getnumber());
-				a[j + 1].setname(bubbleKunde.getname());
-				a[j + 1].setnumber(bubbleKunde.getnumber());
-
+			string b = a[j].getname();
+			string c = a[j + 1].getname();
+			int bint = a[j].getnumber();
+			int cint = a[j + 1].getnumber();
+			if (b > c)
+			{
+				/*a[j].setname(c);
+				a[j].setnumber(cint);
+				a[j + 1].setname(b);
+				a[j + 1].setnumber(bint);*/
+				swap(a[j], a[j + 1]);
 			}
 		}
 	}
