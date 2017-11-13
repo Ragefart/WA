@@ -393,6 +393,8 @@ void Verwaltung::bubblesort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Bubblesort mit " << a.size() << " Elementen begonnen!" << endl;
 
+	clock_t time = clock();
+
 	for (int i = 1; i < a.size(); i++) {
 		for (int j = a.size() - 1; j >= i; j--) {
 			if (a[j - 1].getname() > a[j].getname()) {
@@ -402,8 +404,11 @@ void Verwaltung::bubblesort(vector<Kunde>& a) {
 			}
 		}
 	}
+	time = clock() - time;
+	double duration = double(time) / CLOCKS_PER_SEC;
 
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
+	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl; 
 	menu();
 }
 
@@ -411,6 +416,8 @@ void Verwaltung::bubblesort(vector<Kunde>& a) {
 void Verwaltung::selectionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Selectionsort mit " << a.size() << " Elementen begonnen!" << endl;
+
+	clock_t time = clock();
 	for (int i = 0; i < a.size() - 1; i++) {
 		int k = i; // Index kleinstes Element
 		Kunde min = a[i]; // kleinstes Element
@@ -423,8 +430,10 @@ void Verwaltung::selectionsort(vector<Kunde>& a) {
 		a[k] = a[i]; // vertausche aktuelles Element mit kleinstem Element
 		a[i] = min;
 	}
-
+	time = clock() - time;
+	double duration = double(time) / CLOCKS_PER_SEC;
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
+	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl;
 	menu();
 }
 
@@ -433,9 +442,14 @@ void Verwaltung::selectionsort(vector<Kunde>& a) {
 void Verwaltung::quicksort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
+	clock_t time = clock();
 
 
+
+	time = clock() - time;
+	double duration = double(time) / CLOCKS_PER_SEC;
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
+	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl;
 	menu();
 }
 
@@ -443,6 +457,7 @@ void Verwaltung::quicksort(vector<Kunde>& a) {
 void Verwaltung::insertionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Insertionsort mit " << a.size() << " Elementen begonnen!" << endl;
+	clock_t time = clock();
 	for (int i = 1; i < a.size(); i++) { // Durchläufe
 		Kunde tmp = a[i];
 		int j = i - 1;
@@ -452,8 +467,10 @@ void Verwaltung::insertionsort(vector<Kunde>& a) {
 		}
 		a[j + 1] = tmp; // einfügen an richtiger Stelle
 	}
-
+	time = clock() - time;
+	double duration = double(time) / CLOCKS_PER_SEC;
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
+	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl;
 	menu();
 }
 
