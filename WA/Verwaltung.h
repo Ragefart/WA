@@ -35,9 +35,9 @@ public:
 	void bubblesort(vector<Kunde>&);
 	void selectionsort(vector<Kunde>&);
 	void insertionsort(vector<Kunde>&);
-	void startqs(vector<Kunde> a);
+	void startqs(vector<Kunde>& a);
 	void quicksort(vector<Kunde>&, int low, int high);
-	int Partition(vector<Kunde>& a, int low, int high);
+	int partition(vector<Kunde>& a, int low, int high);
 private:
 	vector<int> length = { 5, 6, 7, 8, 9 };
 	vector<string> letterlist = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
