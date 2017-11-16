@@ -35,7 +35,7 @@ public:
 	void bubblesort(vector<Kunde>&);
 	void selectionsort(vector<Kunde>&);
 	void insertionsort(vector<Kunde>&);
-	void startqs(vector<Kunde>& a);
+	void startqs(vector<Kunde> a);
 	void quicksort(vector<Kunde>&, int low, int high);
 	int Partition(vector<Kunde>& a, int low, int high);
 private:

@@ -438,7 +438,7 @@ void Verwaltung::selectionsort(vector<Kunde>& a) {
 }
 
 
-void Verwaltung::startqs(vector<Kunde>& a) {
+void Verwaltung::startqs(vector<Kunde> a) {
 	system("cls");
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
 	clock_t time = clock();
