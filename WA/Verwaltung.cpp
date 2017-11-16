@@ -232,19 +232,19 @@ void Verwaltung::quickmenu() {
 	switch (eingabe) {
 	case'a':
 	case'A':
-		quicksort(listof50);
+		startqs(listof50);
 		break;
 	case'b':
 	case'B':
-		quicksort(listof500);
+		startqs(listof500);
 		break;
 	case'c':
 	case'C':
-		quicksort(listof5000);
+		startqs(listof5000);
 		break;
 	case'd':
 	case'D':
-		quicksort(listof50000);
+		startqs(listof50000);
 		break;
 	case'y':
 	case'Y':
@@ -438,14 +438,11 @@ void Verwaltung::selectionsort(vector<Kunde>& a) {
 }
 
 
-//TODO alles
-void Verwaltung::quicksort(vector<Kunde>& a) {
+void Verwaltung::startqs(vector<Kunde>& a) {
 	system("cls");
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
 	clock_t time = clock();
-
-
-
+	quicksort(a, 0, a.size());
 	time = clock() - time;
 	double duration = double(time) / CLOCKS_PER_SEC;
 	cout << "Liste mit " << a.size() << " Elementen wurde sortiert!" << endl;
@@ -454,6 +451,35 @@ void Verwaltung::quicksort(vector<Kunde>& a) {
 }
 
 
+void Verwaltung::quicksort(vector<Kunde>& a, int low, int high) {
+	
+	if (a[low].getname() < a[high].getname()) {
+		int plocation = Partition(a, low, high);
+		quicksort(a, low, plocation - 1);
+		quicksort(a, plocation + 1, high);
+	}
+
+
+}
+
+
+int Verwaltung::Partition(vector<Kunde>& a, int low, int high) {
+	
+	Kunde pivot = a[low];
+	int left = low;
+	for (int i = low + 1; i <= high; i++) {
+		if (a[i].getname() <= pivot.getname()) {
+			left = left + 1;
+			swap(a[i], a[left]);
+
+
+		}
+	}
+	swap(a[low], a[left]);
+
+	return left;
+}
+ 
 void Verwaltung::insertionsort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Insertionsort mit " << a.size() << " Elementen begonnen!" << endl;
