@@ -554,6 +554,32 @@ void Verwaltung::halfsort(vector<Kunde>& a) {
 	cout << "Es wurden " << amount << " Elemente von " << a.size() << " vertauscht." << endl;
 }
 
+void Verwaltung::quickneu(vector<Kunde>& a, int low, int high) {
+	int i = low;
+	int j = high;
+	int x = rand() % (high + 1 - low) + low;
+	do {
+		while (a[i].getname() < a[x].getname()) {
+			i++;
+		}
+		while (a[j].getname() > a[x].getname()) {
+			j--;
+		}
+		if (a[i].getname() <= a[j].getname()) {
+			swap(a[i], a[j]);
+			i++;
+			j--;
+		}
+	} while (i <= j);
+
+	if (low < j) {
+		quickneu(a, low, j);
+	}
+	if (i < high) {
+		quickneu(a, i, high);
+	}
+}
+
 void Verwaltung::menu() {
 	cout << "Willkommen im Hauptmenue, bitte entscheiden Sie wie Sie fortfahren moechten" << endl << endl;
 	cout << "(N) Neue Liste(n) generieren." << endl;
