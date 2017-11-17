@@ -484,7 +484,6 @@ void Verwaltung::quicksort(vector<Kunde>& a, int low, int high) {
 
 }
 
-
 int Verwaltung::partition(vector<Kunde>& a, int low, int high) {
 	string pivot = a[low].getname();
 	int left = low;
@@ -499,8 +498,6 @@ int Verwaltung::partition(vector<Kunde>& a, int low, int high) {
 
 	return left;
 }
-
-
  
 void Verwaltung::insertionsort(vector<Kunde>& a) {
 	system("cls");
