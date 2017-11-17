@@ -183,6 +183,16 @@ void Verwaltung::deletelist() {
 	menu();
 }
 
+bool Verwaltung::issorted(vector<Kunde> a) {
+	for (int i = 0; i < a.size() - 2; i++) {
+		if (a[i].getname() > a[i+1].getname())
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 void Verwaltung::sortmenu() {
 	system("cls");
 	cout << "Welcher Algorithmus soll verwendet werden?" << endl;
@@ -409,7 +419,6 @@ void Verwaltung::selectionmenu() {
 	}
 }
 
-
 void Verwaltung::bubblesort(vector<Kunde>& a) {
 	system("cls");
 	cout << "Bubblesort mit " << a.size() << " Elementen begonnen!" << endl;
@@ -432,7 +441,6 @@ void Verwaltung::bubblesort(vector<Kunde>& a) {
 	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl; 
 	menu();
 }
-
 
 void Verwaltung::selectionsort(vector<Kunde>& a) {
 	system("cls");
@@ -458,7 +466,6 @@ void Verwaltung::selectionsort(vector<Kunde>& a) {
 	menu();
 }
 
-
 void Verwaltung::startqs(vector<Kunde>& a) {
 	system("cls");
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
@@ -472,7 +479,6 @@ void Verwaltung::startqs(vector<Kunde>& a) {
 	cout << "Abgeschlossen in " << duration << " Sekunden" << endl << endl;
 	menu();
 }
-
 
 void Verwaltung::quicksort(vector<Kunde>& a, int low, int high) {
 	
