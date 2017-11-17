@@ -443,7 +443,7 @@ void Verwaltung::startqs(vector<Kunde>& a) {
 	cout << "Quicksort mit " << a.size() << " Elementen begonnen!" << endl;
 	clock_t time = clock();
 
-	quicksort(a, 0, a.size());
+	quicksort(a, 0, a.size()-1);
 	
 	time = clock() - time;
 	double duration = double(time) / CLOCKS_PER_SEC;
