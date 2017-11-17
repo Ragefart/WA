@@ -190,6 +190,8 @@ void Verwaltung::sortmenu() {
 	cout << "(S) Selection Sort" << endl;
 	cout << "(B) Bubble Sort" << endl;
 	cout << "(I) Insertion Sort" << endl;
+	cout << "(R) Umgekehrt sortierte Listen erstellen (ausser 50000er)" << endl;
+	cout << "(U) Unregelmaessig sortierte Listen erstellen (ausser 50000er)" << endl;
 	cout << "(X) Zurueck" << endl;
 	cin >> eingabe;
 	switch (eingabe) {
@@ -208,6 +210,25 @@ void Verwaltung::sortmenu() {
 	case'i':
 	case'I':
 		insertionmenu();
+		break;
+	case'r':
+	case'R':
+		cout << "50er umkehren" << endl;
+		invertsort(listof50);
+		cout << "500er umkehren" << endl;
+		invertsort(listof500);
+		cout << "5000er umkehren (kann dauern)" << endl;
+		invertsort(listof5000);
+		system("cls");
+		menu();
+		break;
+	case'u':
+	case'U':
+		system("cls");
+		halfsort(listof50);
+		halfsort(listof500);
+		halfsort(listof5000);
+		menu();
 		break;
 	case'x':
 	case'X':
@@ -501,6 +522,34 @@ void Verwaltung::insertionsort(vector<Kunde>& a) {
 	menu();
 }
 
+void Verwaltung::invertsort(vector<Kunde>& a) {
+	for (int i = 1; i < a.size(); i++) { // Durchläufe
+		Kunde tmp = a[i];
+		int j = i - 1;
+		while (j >= 0 && tmp.getname() > a[j].getname()) { // verschieben größerer Elemente
+			a[j + 1] = a[j];
+			j--;
+		}
+		a[j + 1] = tmp; // einfügen an richtiger Stelle
+	}
+}
+
+void Verwaltung::halfsort(vector<Kunde>& a) {
+	int b = (a.size() / 10) - 2;
+	int amount = rand() % b + 4;
+	for (int i = 0; i < amount; i++) {
+		int switcha = rand() % a.size();
+		int switchb = rand() % a.size();
+		if (switchb == 0) {
+			switchb = switchb +1;
+		}
+		if (switcha == switchb) {
+			switchb = switchb - 1;
+		}
+		swap(a[switcha], a[switchb]);
+	}
+	cout << "Es wurden " << amount << " Elemente von " << a.size() << " vertauscht." << endl;
+}
 
 void Verwaltung::menu() {
 	cout << "Willkommen im Hauptmenue, bitte entscheiden Sie wie Sie fortfahren moechten" << endl << endl;
